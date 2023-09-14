@@ -1,46 +1,45 @@
-This is a simple Express API that provides CRUD operations for users using Prisma.
+# User API
 
-Usage:
+This API allows you to manage user data. It provides endpoints for creating, retrieving, updating, and deleting user records. The API is built using Express.js and Prisma for database interactions.
 
-# Get a list of all users
-GET http://localhost:3003/api
+## Table of Contents
+- [Base URL](#base-url)
+- [Endpoints](#endpoints)
+  - [Retrieve All Users](#retrieve-all-users)
+  - [Create a New User](#create-a-new-user)
+  - [Retrieve a User by ID](#retrieve-a-user-by-id)
+  - [Update a User by ID](#update-a-user-by-id)
+  - [Delete a User by ID](#delete-a-user-by-id)
+- [Error Handling](#error-handling)
+- [Running the Server](#running-the-server)
 
-# Create a new user
-POST http://localhost:3003/api
-Content-Type: application/json
+## Base URL
 
-{
-  "name": "John Doe"
-}
+The base URL for this API is `http://localhost:3000`.
 
-# Get a single user by ID
-GET http://localhost:3003/api/1
+## Endpoints
 
-# Update a user by ID
-PUT http://localhost:3003/api/1
-Content-Type: application/json
+### Retrieve All Users
 
-{
-  "name": "Jane Doe"
-}
+- **URL:** `/api`
+- **Method:** GET
+- **Description:** Retrieve a list of all users.
+- **Response:**
+  - **Status Code:** 200 OK
+  - **Response Body:** An array of user objects.
+  
+  Example Response:
+  ```json
+  {
+    "users": [
+      {
+        "id": 1,
+        "name": "John Doe"
+      },
+      {
+        "id": 2,
+        "name": "Jane Smith"
+      }
+    ]
+  }
 
-# Delete a user by ID
-DELETE http://localhost:3003/api/1
-Responses:
-
-# Successful responses
-GET /api: JSON array of user objects
-POST /api: Newly created user object
-GET /api/:id: User object with the specified ID
-PUT /api/:id: Updated user object
-DELETE /api/:id: Deleted user object
-
-# Error responses
-400 Bad Request: Request body is invalid
-404 Not Found: Requested resource does not exist
-500 Internal Server Error: Unexpected error occurred
-Running the API:
-
-npm install
-npm start
-Server will start listening on port 3003.
