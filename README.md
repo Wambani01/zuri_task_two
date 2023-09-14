@@ -1,87 +1,46 @@
-Express API with Prisma
-This is a simple Express.js API project using Prisma as the database ORM (Object-Relational Mapping). It provides endpoints for managing user data.
+This is a simple Express API that provides CRUD operations for users using Prisma.
 
-Table of Contents
-Getting Started
-Prerequisites
-Installation
-Usage
-API Endpoints
-Contributing
-License
-Getting Started
-Prerequisites
-Before you begin, make sure you have the following software installed on your system:
+Usage:
 
-Node.js and npm (Node Package Manager)
-Prisma
-Installation
-Clone this repository to your local machine:
+# Get a list of all users
+GET http://localhost:3003/api
 
-bash
-Copy code
-git clone <repository-url>
-Navigate to the project directory:
+# Create a new user
+POST http://localhost:3003/api
+Content-Type: application/json
 
-bash
-Copy code
-cd express-prisma-api
-Install the project dependencies:
-
-bash
-Copy code
-npm install
-Usage
-API Endpoints
-GET /api
-
-Retrieves a list of all users.
-
-POST /api
-
-Creates a new user.
-
-Request Body:
-
-json
-Copy code
 {
   "name": "John Doe"
 }
-GET /api/:id
 
-Retrieves a user by ID.
+# Get a single user by ID
+GET http://localhost:3003/api/1
 
-PUT /api/:id
+# Update a user by ID
+PUT http://localhost:3003/api/1
+Content-Type: application/json
 
-Updates a user by ID.
-
-Request Body:
-
-json
-Copy code
 {
-  "name": "Updated Name"
+  "name": "Jane Doe"
 }
-DELETE /api/:id
 
-Deletes a user by ID.
+# Delete a user by ID
+DELETE http://localhost:3003/api/1
+Responses:
 
-Starting the Server
-To start the Express server, run the following command:
+# Successful responses
+GET /api: JSON array of user objects
+POST /api: Newly created user object
+GET /api/:id: User object with the specified ID
+PUT /api/:id: Updated user object
+DELETE /api/:id: Deleted user object
 
-bash
-Copy code
+# Error responses
+400 Bad Request: Request body is invalid
+404 Not Found: Requested resource does not exist
+500 Internal Server Error: Unexpected error occurred
+Running the API:
+
+npm install
 npm start
-The server will be running on port 3003 by default.
-
-Contributing
-Contributions are welcome! If you would like to contribute to this project, please follow these steps:
-
-Fork the repository.
-Create a new branch for your feature or bug fix.
-Make your changes and commit them with descriptive commit messages.
-Push your changes to your fork.
-Create a pull request to merge your changes into the main repository.
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
+Server will start listening on port 3003.
